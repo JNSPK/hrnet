@@ -1,0 +1,12 @@
+.switch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 10rem;
+}
+.switch p {
+  font-size: small;
+  font-weight: bold;
+  text-transform: uppercase;
+}

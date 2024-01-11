@@ -1,0 +1,16 @@
+.datePicker {
+  color: #ffffff;
+  width: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.datePicker label {
+  font-size: 0.8rem;
+}
+
+.datePicker input {
+  font-size: small;
+  padding: 0;
+  padding-left: 0.8rem;
+}

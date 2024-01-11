@@ -1,25 +1,48 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import '../styles/header.css';
+import logo from '../img/logo.png';
+import ThemeSwitcher from './themeSwitcher';
+import { useTheme } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 const Header = () => {
+  const theme = useTheme();
+  const location = useLocation();
+
+  const [isFormActive, setFormActive] = useState(false);
+  const [isListActive, setListActive] = useState(false);
+
+  useEffect(() => {
+    setFormActive(location.pathname === '/');
+    setListActive(location.pathname === '/employees');
+  }, [location.pathname]);
+
+  const getNavLinkStyle = (isActive: boolean) => {
+    return {
+      backgroundColor: isActive ? theme.palette.primary.main : 'transparent',
+      color: isActive
+        ? theme.palette.primary.contrastText
+        : theme.palette.primary.main,
+    };
+  };
   return (
     <header>
+      <img src={logo} alt='HRnet logo' className='logo' />
       <nav>
         <NavLink
           to='/'
-          className={({ isActive, isPending }) =>
-            isPending ? 'pending' : isActive ? 'active' : ''
-          }>
+          className={isFormActive ? '' : 'inactive'}
+          style={getNavLinkStyle(isFormActive)}>
           Form
         </NavLink>
         <NavLink
           to='/employees'
-          className={({ isActive, isPending }) =>
-            isPending ? 'pending' : isActive ? 'active' : ''
-          }>
+          className={isListActive ? '' : 'inactive'}
+          style={getNavLinkStyle(isListActive)}>
           Employees List
         </NavLink>
       </nav>
+      <ThemeSwitcher />
     </header>
   );
 };
