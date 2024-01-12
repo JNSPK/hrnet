@@ -1,10 +1,10 @@
-import ListEmployees from '../components/listEmployees';
+import Table from '../components/table';
 import '../styles/employees.css';
 
 const Employees = () => {
   return (
     <div className='list-container'>
-      <ListEmployees />
+      <Table />
     </div>
   );
 };

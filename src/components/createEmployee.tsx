@@ -1,7 +1,6 @@
 import '../styles/createEmployee.css';
-import { Select } from '@mui/base/Select';
-import { Option } from '@mui/base/Option';
 import DatePickerCustom from './datePicker';
+import CustomSelect from './select';
 import { useTheme } from '@mui/material';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
@@ -142,6 +141,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   id='firstName'
                   name='firstName'
                   placeholder='First name'
+                  required
                 />
                 <input
                   style={{
@@ -152,6 +152,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   id='lastName'
                   name='lastName'
                   placeholder='Last name'
+                  required
                 />
                 <DatePickerCustom label='Date of Birth' />
               </fieldset>
@@ -168,6 +169,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   id='street'
                   name='street'
                   placeholder='Street'
+                  required
                 />
                 <input
                   style={{
@@ -178,31 +180,14 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   id='city'
                   name='city'
                   placeholder='City'
+                  required
                 />
-                <Select
-                  style={{
-                    border: 'solid 1px',
-                    borderColor: theme.palette.primary.main,
-                    backgroundColor: theme.palette.primary.main,
-                    color: theme.palette.primary.contrastText,
-                  }}
-                  defaultValue='none'
-                  id='dropdown'
+                <CustomSelect
+                  theme={theme}
+                  options={state}
                   placeholder='State'
-                  name='state'>
-                  {state.map((item, index) => (
-                    <Option
-                      style={{
-                        color: theme.palette.primary.contrastText,
-                        backgroundColor: theme.palette.primary.main,
-                        width: '10rem',
-                      }}
-                      key={index}
-                      value={index + 1}>
-                      {item}
-                    </Option>
-                  ))}
-                </Select>
+                  id='dropdown-state'
+                />
                 <input
                   style={{
                     backgroundColor: theme.palette.primary.main,
@@ -214,6 +199,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   name='zip'
                   inputMode='numeric'
                   pattern='[0-9]{5}'
+                  required
                 />
               </fieldset>
             </section>
@@ -221,29 +207,12 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
               <fieldset className='hiring-info'>
                 <legend>Hiring infos</legend>
                 <DatePickerCustom label='Start Date' />
-                <Select
-                  style={{
-                    border: 'solid 1px',
-                    borderColor: theme.palette.primary.main,
-                    backgroundColor: theme.palette.primary.main,
-                    color: theme.palette.primary.contrastText,
-                  }}
-                  defaultValue='none'
+                <CustomSelect
+                  theme={theme}
+                  options={departement}
+                  placeholder='Department'
                   id='dropdown-departement'
-                  placeholder='Department'>
-                  {departement.map((item, index) => (
-                    <Option
-                      style={{
-                        color: theme.palette.primary.contrastText,
-                        backgroundColor: theme.palette.primary.main,
-                        width: '10rem',
-                      }}
-                      key={index}
-                      value={index + 1}>
-                      {item}
-                    </Option>
-                  ))}
-                </Select>
+                />
               </fieldset>
             </section>
           </div>

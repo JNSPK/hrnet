@@ -9,7 +9,7 @@ interface DatePickerCustomProps {
 
 const DatePickerCustom: FC<DatePickerCustomProps> = ({ label }) => {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale='en-us'>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DatePicker className='datePicker' label={label} name='datePicker' />
     </LocalizationProvider>
   );

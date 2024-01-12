@@ -1,30 +1,27 @@
 import { Switch } from '@mui/material';
-import { IThemeMode, IthemeContext } from '../themeContext/types';
+import { ThemeMode, ThemeContext } from '../themeContext/types';
 import { useContext, useEffect, useState } from 'react';
-import { ThemeContext } from '../themeContext';
+import { Context } from '../themeContext';
 import '../styles/themeSwitcher.css';
 
 const ThemeSwitcher = () => {
-  const { themeMode, switchThemeMode } = useContext(
-    ThemeContext
-  ) as IthemeContext;
-  const [checked, setChecked] = useState(themeMode === IThemeMode.DARK);
+  const { themeMode, switchThemeMode } = useContext(Context) as ThemeContext;
+  const [checked, setChecked] = useState(themeMode === ThemeMode.DARK);
 
   useEffect(() => {
     const themeModeFromPref = _getThemePref();
-    setChecked(themeModeFromPref === IThemeMode.DARK);
+    setChecked(themeModeFromPref === ThemeMode.DARK);
   }, [themeMode]);
-
-  const _getThemePref = (): IThemeMode => {
-    const themeModePref = localStorage.getItem('themeMode') as IThemeMode;
+  const _getThemePref = (): ThemeMode => {
+    const themeModePref = localStorage.getItem('themeMode') as ThemeMode;
     if (themeModePref) {
       return themeModePref;
     }
-    return IThemeMode.LIGHT;
+    return ThemeMode.LIGHT;
   };
 
   const handleSwitchTheme = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newMode = checked ? IThemeMode.LIGHT : IThemeMode.DARK;
+    const newMode = checked ? ThemeMode.LIGHT : ThemeMode.DARK;
     switchThemeMode(newMode);
     setChecked(e.target.checked);
   };

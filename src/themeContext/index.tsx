@@ -1,14 +1,14 @@
 import { createContext, useEffect, useState } from 'react';
-import { IThemeMode, IthemeContext } from './types';
+import { ThemeMode, ThemeContext } from './types';
 import { AppDarkTheme, AppLightTheme } from './theme';
 import { Theme, ThemeProvider } from '@mui/material';
 
-export const ThemeContext = createContext<IthemeContext | null>(null);
+export const Context = createContext<ThemeContext | null>(null);
 
 export const ThemeContextProvider: React.FunctionComponent<
   React.PropsWithChildren
 > = ({ children }) => {
-  const [themeMode, setThemeMode] = useState<IThemeMode>(IThemeMode.LIGHT);
+  const [themeMode, setThemeMode] = useState<ThemeMode>(ThemeMode.LIGHT);
   const [theme, setTheme] = useState<Theme>(AppLightTheme);
 
   useEffect(() => {
@@ -18,35 +18,35 @@ export const ThemeContextProvider: React.FunctionComponent<
 
   useEffect(() => {
     switch (themeMode) {
-      case IThemeMode.LIGHT:
+      case ThemeMode.LIGHT:
         setTheme(AppLightTheme);
         break;
-      case IThemeMode.DARK:
+      case ThemeMode.DARK:
         setTheme(AppDarkTheme);
         break;
     }
   }, [themeMode]);
 
-  const _getThemePref = (): IThemeMode => {
-    const themeModePref = localStorage.getItem('themeMode') as IThemeMode;
+  const _getThemePref = (): ThemeMode => {
+    const themeModePref = localStorage.getItem('themeMode') as ThemeMode;
     if (themeModePref) {
       return themeModePref;
     }
-    return IThemeMode.LIGHT;
+    return ThemeMode.LIGHT;
   };
 
-  const _setThemeModeToPref = (mode: IThemeMode) => {
+  const _setThemeModeToPref = (mode: ThemeMode) => {
     localStorage.setItem('themeMode', mode);
   };
 
-  const switchThemeMode = (mode: IThemeMode) => {
+  const switchThemeMode = (mode: ThemeMode) => {
     setThemeMode(mode);
     _setThemeModeToPref(mode);
   };
 
   return (
-    <ThemeContext.Provider value={{ themeMode, switchThemeMode }}>
+    <Context.Provider value={{ themeMode, switchThemeMode }}>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
-    </ThemeContext.Provider>
+    </Context.Provider>
   );
 };

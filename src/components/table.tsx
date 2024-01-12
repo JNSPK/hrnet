@@ -20,7 +20,7 @@ interface Person {
   employeeDepartment: string;
 }
 
-const ListEmployees = () => {
+const Table = () => {
   const allEmployees = useSelector(selectEmployees);
 
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
@@ -77,4 +77,4 @@ const ListEmployees = () => {
   return <MaterialReactTable table={table} />;
 };
 
-export default ListEmployees;
+export default Table;

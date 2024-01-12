@@ -1,9 +1,9 @@
-export enum IThemeMode {
+export enum ThemeMode {
   LIGHT = 'light',
   DARK = 'dark',
 }
 
-export interface IthemeContext {
-  themeMode: IThemeMode;
-  switchThemeMode: (mode: IThemeMode) => void;
+export interface ThemeContext {
+  themeMode: ThemeMode;
+  switchThemeMode: (mode: ThemeMode) => void;
 }
