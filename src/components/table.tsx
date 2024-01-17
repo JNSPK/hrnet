@@ -28,39 +28,118 @@ const Table = () => {
       {
         header: 'First Name',
         accessorKey: 'firstName',
-        enableHiding: false,
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Last Name',
         accessorKey: 'lastName',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Date of Birth',
         accessorKey: 'dateOfBirth',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Street',
         accessorKey: 'addressStreet',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'City',
         accessorKey: 'addressCity',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'State',
         accessorKey: 'addressState',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Zip Code',
         accessorKey: 'addressZip',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Start Date',
         accessorKey: 'startDate',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
       {
         header: 'Departement',
         accessorKey: 'employeeDepartment',
+        muiTableHeadCellProps: {
+          style: {
+            minWidth: '2rem',
+            maxWidth: '10rem',
+
+            verticalAlign: 'inherit',
+          },
+        },
+        enableResizing: false,
       },
     ],
     []
@@ -69,9 +148,23 @@ const Table = () => {
   const table = useMaterialReactTable({
     columns,
     data: allEmployees,
-    enableRowSelection: false, //enable some features
-    enableGlobalFilter: true, //turn off a feature
+    enableRowSelection: false,
+    enableGlobalFilter: true,
     enableColumnResizing: true,
+    enableColumnFilters: false,
+    enableColumnActions: false,
+    enableFullScreenToggle: false,
+    enableDensityToggle: false,
+    enableHiding: false,
+    layoutMode: 'semantic',
+    displayColumnDefOptions: {
+      'mrt-row-actions': {
+        size: 350,
+        muiTableHeadCellProps: {
+          align: 'center',
+        },
+      },
+    },
   });
 
   return <MaterialReactTable table={table} />;
