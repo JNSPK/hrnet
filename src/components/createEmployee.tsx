@@ -5,6 +5,8 @@ import { useTheme } from '@mui/material';
 import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../redux/employeesSlice';
+import Modal from '@jnspk/reactmodal';
+import { useState } from 'react';
 
 interface CreateEmployeeProps {}
 
@@ -80,9 +82,32 @@ const departement = [
   'Legal',
 ];
 
+const modalOptions = {
+  message: 'Employee successfully created !',
+  boxStyle: {
+    width: '30rem',
+    height: '15rem',
+    boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+  },
+  closeStyle: {
+    borderRadius: '50%',
+    boxShadow: '0px 10px 10px -3px rgba(0,0,0,0.1)',
+    top: '1rem',
+    right: '1rem',
+  },
+  enableSecondModalButton: false,
+  fade: true,
+};
+
 const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -112,9 +137,9 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
     };
 
     dispatch(addEmployee(newEmployee));
-    console.log(form);
-
+    openModal();
     form.reset();
+
     console.log('success :', newEmployee);
   };
 
@@ -126,7 +151,6 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
           backgroundColor: theme.palette.secondary.main,
         }}>
         <h1 className='createEmployee-title'>Create Employee</h1>
-
         <form onSubmit={handleSubmit}>
           <div className='createEmployee-form-container'>
             <section className='civil-section'>
@@ -139,7 +163,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   }}
                   type='text'
                   id='firstName'
-                  name='firstName'
+                  name='employee[firstName]'
                   placeholder='First name'
                   required
                 />
@@ -216,7 +240,6 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
               </fieldset>
             </section>
           </div>
-
           <Button
             type='submit'
             id='save-btn'
@@ -234,6 +257,9 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
           </Button>
         </form>
       </div>
+      {isOpen && (
+        <Modal isOpen={isOpen} setIsOpen={setIsOpen} options={modalOptions} />
+      )}
     </section>
   );
 };

@@ -1,6 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
 import Header from './components/header';
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
 import Home from './pages/home';
 import Employees from './pages/employees';
 import { ThemeContextProvider } from './themeContext';
