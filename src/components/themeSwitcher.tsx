@@ -30,7 +30,8 @@ const ThemeSwitcher = () => {
       <Switch
         className='switch-btn'
         checked={checked}
-        onChange={handleSwitchTheme}></Switch>
+        onChange={handleSwitchTheme}
+        aria-label='switch-theme'></Switch>
       <p>Theme</p>
     </div>
   );

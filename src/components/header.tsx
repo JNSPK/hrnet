@@ -20,9 +20,7 @@ const Header = () => {
   const getNavLinkStyle = (isActive: boolean) => {
     return {
       backgroundColor: isActive ? theme.palette.primary.main : 'transparent',
-      color: isActive
-        ? theme.palette.primary.contrastText
-        : theme.palette.primary.main,
+      color: theme.palette.primary.contrastText,
     };
   };
   return (

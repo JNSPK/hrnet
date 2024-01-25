@@ -7,7 +7,7 @@ export const AppLightTheme: Theme = createTheme({
       paper: 'rgb(243,252,255)',
     },
     primary: {
-      main: '#646cff',
+      main: '#A8FFE4',
       light: '#9197ff',
     },
     secondary: {
@@ -24,7 +24,7 @@ export const AppDarkTheme: Theme = createTheme({
       paper: '#242424',
     },
     primary: {
-      main: '#E75A7C',
+      main: '#6B2436',
     },
     secondary: {
       main: '#2e2e2e',

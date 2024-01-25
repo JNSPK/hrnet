@@ -211,6 +211,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   options={state}
                   placeholder='State'
                   id='dropdown-state'
+                  aria-label='state'
                 />
                 <input
                   style={{
@@ -236,6 +237,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   options={departement}
                   placeholder='Department'
                   id='dropdown-departement'
+                  aria-label='department'
                 />
               </fieldset>
             </section>
@@ -245,7 +247,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
             id='save-btn'
             style={{
               border: 'solid 1px',
-              borderColor: theme.palette.primary.main,
+              borderColor: theme.palette.secondary.contrastText,
+              color: theme.palette.secondary.contrastText,
             }}
             sx={{
               '&:hover': {
