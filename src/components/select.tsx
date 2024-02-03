@@ -15,6 +15,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   options,
   placeholder,
   id,
+  onChange,
 }) => {
   return (
     <Select
@@ -26,7 +27,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       }}
       defaultValue='none'
       placeholder={placeholder}
-      id={id}>
+      id={id}
+      onChange={onChange}>
       {options.map((item, index) => (
         <Option
           style={{

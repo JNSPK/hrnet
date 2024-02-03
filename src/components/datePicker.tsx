@@ -5,12 +5,18 @@ import '../styles/datePicker.css';
 
 interface DatePickerCustomProps {
   label: string;
+  onChange: () => void;
 }
 
-const DatePickerCustom: FC<DatePickerCustomProps> = ({ label }) => {
+const DatePickerCustom: FC<DatePickerCustomProps> = ({ label, onChange }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DatePicker className='datePicker' label={label} name='datePicker' />
+      <DatePicker
+        className='datePicker'
+        label={label}
+        name='datePicker'
+        onChange={onChange}
+      />
     </LocalizationProvider>
   );
 };
