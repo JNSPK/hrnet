@@ -6,9 +6,7 @@ import { Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addEmployee } from '../redux/employeesSlice';
 import Modal from '@jnspk/reactmodal';
-import { ChangeEvent, ChangeEventHandler, useState } from 'react';
-import { PickerOnChangeFn } from '@mui/x-date-pickers/internals/hooks/useViews';
-import { UsePickerValueBaseProps } from '@mui/x-date-pickers/internals/hooks/usePicker/usePickerValue.types';
+import { useState } from 'react';
 
 interface CreateEmployeeProps {}
 
@@ -107,14 +105,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
     format: (arg0: string) => void;
   };
 
-  type SelectChangeEvent = {
-    target: {
-      innerText: string;
-    };
-  };
-  type SubmitEvent = {
-    preventDefault: () => void;
-  };
+  type SubmitEvent = React.FormEvent<HTMLFormElement>;
 
   type ChangeEvent = {
     target: {
@@ -123,19 +114,23 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
     };
   };
   interface Params {
-    type: string;
     name: string;
   }
 
   const handleChangeDate = (event: DateChangeEvent, params: Params) => {
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [params.name]: event.format('MM/DD/YYYY'),
-    }));
+    if (event) {
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        [params.name]: event.format('MM/DD/YYYY'),
+      }));
+    }
     return;
   };
 
-  const handleChangeSelect = (event: SelectChangeEvent, params: Params) => {
+  const handleChangeSelect = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    params: Params
+  ) => {
     if (event) {
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -147,14 +142,11 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
   };
   const handleChange = (event: ChangeEvent) => {
     const { name, value } = event.target;
-
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
-    console.log(event.target);
   };
 
   const handleSubmit = (event: SubmitEvent) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(addEmployee(formData));
     openModal();
   };
@@ -205,8 +197,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                 <DatePickerCustom
                   label='Date of Birth'
                   onChange={(event) => {
+                    //@ts-expect-error: event don't have any format method here
                     handleChangeDate(event, {
-                      type: 'datePicker',
                       name: 'dateOfBirth',
                     });
                   }}
@@ -248,7 +240,6 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   aria-label='state'
                   onChange={(event) => {
                     handleChangeSelect(event, {
-                      type: 'select',
                       name: 'addressState',
                     });
                   }}
@@ -276,8 +267,8 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                 <DatePickerCustom
                   label='Start Date'
                   onChange={(event) => {
+                    //@ts-expect-error: event don't have any format method here
                     handleChangeDate(event, {
-                      type: 'datePicker',
                       name: 'startDate',
                     });
                   }}
@@ -290,7 +281,6 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   aria-label='department'
                   onChange={(event) => {
                     handleChangeSelect(event, {
-                      type: 'select',
                       name: 'employeeDepartment',
                     });
                   }}

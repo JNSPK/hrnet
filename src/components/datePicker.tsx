@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { ChangeEvent, FC } from 'react';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import '../styles/datePicker.css';
 
 interface DatePickerCustomProps {
   label: string;
-  onChange: () => void;
+  onChange: (arg0: ChangeEvent | null) => void;
 }
 
 const DatePickerCustom: FC<DatePickerCustomProps> = ({ label, onChange }) => {
