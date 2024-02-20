@@ -1,4 +1,4 @@
-import { Switch } from '@mui/material';
+import { FormControlLabel, Switch } from '@mui/material';
 import { ThemeMode, ThemeContext } from '../themeContext/types';
 import { useContext, useEffect, useState } from 'react';
 import { Context } from '../themeContext';
@@ -27,11 +27,16 @@ const ThemeSwitcher = () => {
   };
   return (
     <div className='switch'>
-      <Switch
-        className='switch-btn'
-        checked={checked}
-        onChange={handleSwitchTheme}
-        aria-label='switch-theme'></Switch>
+      <FormControlLabel
+        control={
+          <Switch
+            className='switch-btn'
+            checked={checked}
+            onChange={handleSwitchTheme}></Switch>
+        }
+        label='switch theme button'
+      />
+
       <p>Theme</p>
     </div>
   );

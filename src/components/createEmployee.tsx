@@ -237,7 +237,7 @@ const CreateEmployee: React.FC<CreateEmployeeProps> = () => {
                   options={state}
                   placeholder='State'
                   id='dropdown-state'
-                  aria-label='state'
+                  aria-label='state button'
                   onChange={(event) => {
                     handleChangeSelect(event, {
                       name: 'addressState',

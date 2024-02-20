@@ -25,6 +25,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
 }) => {
   return (
     <Select
+      aria-label='options list'
       name={name}
       style={{
         border: 'solid 1px',
