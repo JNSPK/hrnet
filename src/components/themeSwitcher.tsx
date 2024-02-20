@@ -34,10 +34,9 @@ const ThemeSwitcher = () => {
             checked={checked}
             onChange={handleSwitchTheme}></Switch>
         }
-        label='switch theme button'
+        label='Theme'
+        labelPlacement='bottom'
       />
-
-      <p>Theme</p>
     </div>
   );
 };
