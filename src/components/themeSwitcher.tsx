@@ -28,6 +28,7 @@ const ThemeSwitcher = () => {
   return (
     <div className='switch'>
       <FormControlLabel
+        className='p'
         control={
           <Switch
             className='switch-btn'

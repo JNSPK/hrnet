@@ -5,8 +5,8 @@
   align-items: center;
   width: 10rem;
 }
-.switch p {
-  font-size: small;
-  font-weight: bold;
-  text-transform: uppercase;
+.MuiFormControlLabel-label {
+  font-size: 0.8rem !important;
+  font-weight: bold !important;
+  line-height: 1.5;
 }
