@@ -527,10 +527,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-2.0.1.tgz"
   integrity sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==
 
-"@jnspk/reactmodal@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@jnspk/reactmodal/-/reactmodal-1.0.4.tgz#db96dd20f9568a3bb2555ebeff124ada0078853b"
-  integrity sha512-pe3HnuaH0qD2KJBoKD9HidgLxZKuIJmKUVW2jHkZRjrmW8xC/3gG26cV9aHEVP2Uu8luLAv/Xc2EP7tvGbFOJg==
+"@jnspk/reactmodal@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@jnspk/reactmodal/-/reactmodal-1.0.5.tgz#8b17adc1e14a37cb46b3a934681cf6f14a43773c"
+  integrity sha512-oZG+jchrYVXgXEcmaT/ExPD+UuKFNBpd0TsjPhc6vbpDeNIKSOgsO1nFWQTasWItGZEU7xz2jZF7Oj7DHkBZIg==
 
 "@jridgewell/gen-mapping@^0.3.0", "@jridgewell/gen-mapping@^0.3.2":
   version "0.3.3"
@@ -1914,11 +1914,6 @@ react-dom@^18.2.0:
   dependencies:
     loose-envify "^1.1.0"
     scheduler "^0.23.0"
-
-react-hook-form@^7.49.3:
-  version "7.49.3"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.49.3.tgz#576a4567f8a774830812f4855e89f5da5830435c"
-  integrity sha512-foD6r3juidAT1cOZzpmD/gOKt7fRsDhXXZ0y28+Al1CHgX+AY1qIN9VSIIItXRq1dN68QrRwl1ORFlwjBaAqeQ==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
